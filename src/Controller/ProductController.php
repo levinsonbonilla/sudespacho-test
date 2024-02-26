@@ -47,8 +47,10 @@ class ProductController extends AbstractController
             $code = 200;
         } catch (ResponseException $re) {
             $data = [
-                "status" => "error",
-                "message" => $re->getMessage()
+                "message" => $re->getMessage(),
+                "data" => [],
+                "numberPages" => 0,
+                "currenPage" => 0
             ];
             $code = $re->getStatusCode();
         } catch (\Throwable $th) {

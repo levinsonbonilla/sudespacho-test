@@ -32,6 +32,10 @@ class ReturnProductsUseCase implements ReturnProductsInterface
         $rows = $this->productRepository->getPages($this->productsFilters);
         $pages = $this->numberPages($rows);
 
+        if ($pages < 1) {
+            throw new ResponseException("There are no products with the applied filter.", 200);     
+        }
+
         if ($this->productsFilters->getPage() > $pages) {
             throw new ResponseException("The requested page number exceeds the allowed number.", 400);            
         }
