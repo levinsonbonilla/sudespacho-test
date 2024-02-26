@@ -20,6 +20,7 @@ class ProductController extends AbstractController
                 "status" => "Success",
                 "message" => "Success"
             ];
+            $code = 202;
         } catch (\Throwable $th) {
             $data = [
                 "status" => "Error",

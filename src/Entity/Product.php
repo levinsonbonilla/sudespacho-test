@@ -115,7 +115,7 @@ class Product
         $this->basePrice = $basePrice;
         $this->priceIncludingVat = $priceIncludingVat;
         $this->createdBy = $user;
-        $this->updatedAt = $user;
+        $this->updatedBy = $user;
         $this->createdAt = new DateTimeImmutable();
         $this->updatedAt = new DateTimeImmutable();
         $this->enabled = $enabled;

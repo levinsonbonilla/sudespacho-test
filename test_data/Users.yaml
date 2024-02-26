@@ -1,0 +1,4 @@
+0:
+    email: test@gmail.com
+    roles: [ROLE_ADMIN]     
+    password:  $2y$13$S5bFJFowxZ98Hp7aheLxAuouCEcDL87ABROcVjkfZpJQJuk0OXvuq #password: apiAdmin2022*

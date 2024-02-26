@@ -38,13 +38,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->email;
     }
 
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -67,26 +60,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return array_unique($roles);
     }
 
-    public function setRoles(array $roles): static
-    {
-        $this->roles = $roles;
-
-        return $this;
-    }
-
     /**
      * @see PasswordAuthenticatedUserInterface
      */
     public function getPassword(): string
     {
         return $this->password;
-    }
-
-    public function setPassword(string $password): static
-    {
-        $this->password = $password;
-
-        return $this;
     }
 
     /**
@@ -96,5 +75,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function add(
+        string $email,
+        array $roles,
+        string $password
+    ) : User
+    {
+        $this->email = $email;
+        $this->roles = $roles;
+        $this->password = $password;
+
+        return $this;
     }
 }

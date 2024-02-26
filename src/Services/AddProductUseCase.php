@@ -42,15 +42,16 @@ class AddProductUseCase implements AddProductInterface
                 $value["enabled"],
                 $this->security->getUser()
             );
+            
             $this->productRepository->add(
                 $product,
-                $totalRows >= ($key + 1) ? true : false 
+                $totalRows == ($key + 1) ? true : false 
             );
         }
     }
 
 
-    private function valueAddedTax(int $valueAddedTaxId) : ValueAddedTax
+    private function valueAddedTax(int $valueAddedTaxId) : ?ValueAddedTax
     {
         return $this->valueAddedTaxRepository->find($valueAddedTaxId);
     }

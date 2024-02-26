@@ -2,6 +2,7 @@
 
 namespace App\DataFixtures;
 
+use App\Entity\User;
 use App\Entity\ValueAddedTax;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -23,10 +24,10 @@ class AppFixtures extends Fixture
         $routeYaml = $this->projectDir . "/test_data/";
 
         $this->createValueAddedTax(Yaml::parseFile($routeYaml . "ValueAddedTax.yaml"), $manager);
+        $this->createUsers(Yaml::parseFile($routeYaml . "Users.yaml"), $manager);
 
         $manager->flush();
     }
-
 
     private function createValueAddedTax(array $data, ObjectManager $em): void
     {
@@ -35,6 +36,19 @@ class AppFixtures extends Fixture
             $valueAddedTax->add(
                 $value["percentage"],
                 $value["enabled"]
+            );
+            $em->persist($valueAddedTax);
+        }
+    }
+
+    private function createUsers(array $data, ObjectManager $em) : void
+    {
+        foreach ($data as $key => $value) {
+            $valueAddedTax = new User();
+            $valueAddedTax->add(
+                $value["email"],
+                $value["roles"],
+                $value["password"]
             );
             $em->persist($valueAddedTax);
         }

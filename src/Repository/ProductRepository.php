@@ -21,11 +21,12 @@ class ProductRepository extends ServiceEntityRepository
         parent::__construct($registry, Product::class);
     }
 
-    public function add(Product $product, bool $flush = true) : void
+    public function add(Product $product, bool $flush = true): void
     {
-        $this->_em->flush($product);
+        $em = $this->getEntityManager();
+        $em->persist($product);
         if ($flush) {
-            $this->_em->flush();
+            $em->flush();
         }
     }
 
