@@ -11,10 +11,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\HttpKernel\KernelInterface;
 
+#[AsCommand(
+    name: 'db:cf',
+    description: 'Configuration of database',
+)]
 class DatabaseConfigurationCommand extends Command
 {
-    protected static $defaultName = 'db:cf';
-    protected static $defaultDescription = 'Configuration of database';
     protected $projectDir;
 
     public function __construct(KernelInterface $kernel)
